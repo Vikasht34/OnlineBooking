@@ -1,0 +1,14 @@
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\UtilityProject.dll
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\UtilityProject.pdb
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\AutoMapper.dll
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\System.ValueTuple.dll
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\AutoMapper.pdb
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\AutoMapper.xml
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\bin\Debug\System.ValueTuple.xml
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\obj\Debug\UtilityProject.csproj.CoreCompileInputs.cache
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\obj\Debug\UtilityProject.dll
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\obj\Debug\UtilityProject.pdb
+C:\Users\ax583e\source\repos\BookMyShow\UtilityProject\obj\Debug\UtilityProject.csprojResolveAssemblyReference.cache

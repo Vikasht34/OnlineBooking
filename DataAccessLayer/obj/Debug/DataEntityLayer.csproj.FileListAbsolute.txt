@@ -1,0 +1,9 @@
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\obj\Debug\DataEntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\ax583e\source\repos\BookMyShow\DataAccessLayer\obj\Debug\DataEntityLayer.csprojResolveAssemblyReference.cache

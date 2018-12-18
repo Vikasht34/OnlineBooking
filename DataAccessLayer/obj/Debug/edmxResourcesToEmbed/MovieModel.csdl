@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MovieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+    <EntitySet Name="Bookings" EntityType="MovieModel.Booking" />
+    <EntitySet Name="Cinemas" EntityType="MovieModel.Cinema" />
+    <EntitySet Name="Movies" EntityType="MovieModel.Movie" />
+    <EntitySet Name="MovieShows" EntityType="MovieModel.MovieShow" />
+    <AssociationSet Name="FK_Booking_Cinema" Association="MovieModel.FK_Booking_Cinema">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Movie" Association="MovieModel.FK_Booking_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieShow_Cinema" Association="MovieModel.FK_MovieShow_Cinema">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="MovieShow" EntitySet="MovieShows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieShow_Movie" Association="MovieModel.FK_MovieShow_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="MovieShow" EntitySet="MovieShows" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="MovieModel.User" />
+    <AssociationSet Name="FK_Booking_User" Association="MovieModel.FK_Booking_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieId" Type="Int32" Nullable="false" />
+    <Property Name="CinemaId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Seats" Type="Int32" Nullable="false" />
+    <Property Name="MovieTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Cinema" Relationship="MovieModel.FK_Booking_Cinema" FromRole="Booking" ToRole="Cinema" />
+    <NavigationProperty Name="Movie" Relationship="MovieModel.FK_Booking_Movie" FromRole="Booking" ToRole="Movie" />
+    <NavigationProperty Name="User" Relationship="MovieModel.FK_Booking_User" FromRole="Booking" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Cinema">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Seats" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="MovieModel.FK_Booking_Cinema" FromRole="Cinema" ToRole="Booking" />
+    <NavigationProperty Name="MovieShows" Relationship="MovieModel.FK_MovieShow_Cinema" FromRole="Cinema" ToRole="MovieShow" />
+  </EntityType>
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MovieRating" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="MovieModel.FK_Booking_Movie" FromRole="Movie" ToRole="Booking" />
+    <NavigationProperty Name="MovieShows" Relationship="MovieModel.FK_MovieShow_Movie" FromRole="Movie" ToRole="MovieShow" />
+  </EntityType>
+  <EntityType Name="MovieShow">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieId" Type="Int32" Nullable="false" />
+    <Property Name="CinemaId" Type="Int32" Nullable="false" />
+    <Property Name="ShowTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Cinema" Relationship="MovieModel.FK_MovieShow_Cinema" FromRole="MovieShow" ToRole="Cinema" />
+    <NavigationProperty Name="Movie" Relationship="MovieModel.FK_MovieShow_Movie" FromRole="MovieShow" ToRole="Movie" />
+    <Property Name="CinemaName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Booking_Cinema">
+    <End Type="MovieModel.Cinema" Role="Cinema" Multiplicity="1" />
+    <End Type="MovieModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CinemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Movie">
+    <End Type="MovieModel.Movie" Role="Movie" Multiplicity="1" />
+    <End Type="MovieModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieShow_Cinema">
+    <End Type="MovieModel.Cinema" Role="Cinema" Multiplicity="1" />
+    <End Type="MovieModel.MovieShow" Role="MovieShow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieShow">
+        <PropertyRef Name="CinemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieShow_Movie">
+    <End Type="MovieModel.Movie" Role="Movie" Multiplicity="1" />
+    <End Type="MovieModel.MovieShow" Role="MovieShow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieShow">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="SecondName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="MovieModel.FK_Booking_User" FromRole="User" ToRole="Booking" />
+  </EntityType>
+  <Association Name="FK_Booking_User">
+    <End Type="MovieModel.User" Role="User" Multiplicity="1" />
+    <End Type="MovieModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

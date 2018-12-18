@@ -1,0 +1,73 @@
+﻿@model BookMyShow.Models.MovieModel
+@{
+    ViewBag.Title = "MovieShowDetails";
+}
+
+<h2>MovieShowDetails</h2>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<div id="main">
+    <div><b>Movies in Cinema Hall</b><br /></div>
+    <br />
+    <br />
+    <br />
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Cinema Name</th>
+            <th>Show Time</th>
+            <th>Check Avialbility</th>
+            <th>Select Seat</th>
+        </tr>
+        @foreach (var d in Model.MovieShowDtos)
+        {
+            <tr>
+                <td>@d.CinemaName</td>
+                <td>@d.ShowTime</td>
+                <td><input type="button" id="btnMakeBooking" onclick="CheckAvailbility(@d.Hours,@d.Minute,@d.CinemaId,@d.MovieId)" value="CheckAvailbility" /></td>
+                <td>
+                    @Html.ActionLink("Select Seat", "SeatSlection", "Home", new { movieShowId = @d.Id }, null)
+                    @*<input type="button" value="Select Seat" onclick="GoToSeatSelection(@d.Hours, @d.Minute, @d.CinemaId, @d.MovieId)"/>*@
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+<div id="seatSelection">
+
+</div>
+
+<script>
+    //$(document).ready(function () {
+    //    $(".date-picker").datepicker({
+    //        dateFormat: 'dd-M-yy'
+    //    });
+
+    //});
+
+    //function GoToSeatSelection(h, m, cinemaId, movieId) {
+    //    debugger;
+    //    var time = h + ":" + m;
+    //    $("#seatSelection").load("Home/SeatSlection/", { cinemaId: cinemaId, movieId: movieId, time: time, movieDate: $(".date-picker").val() }, function () {
+
+    //    });
+    //}
+
+       function CheckAvailbility(h,m,cinemaId, movieId) {
+            var time = h + ":" + m;
+        $.ajax(
+                {
+                url: "@Url.Action("CheckSeatAvailbility","Home")",
+                data: { 'cinemaId': cinemaId, 'movieId': movieId, 'time': time},
+                type: "GET",
+                contentType: "application/json;charset = utf-8",
+                dataType: "json",
+                success: function (data) {
+                    alert(data.s);
+                }
+            });
+        }
+</script>
+

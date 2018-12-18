@@ -1,0 +1,38 @@
+﻿@model BookMyShow.Models.MovieModel
+@{
+    ViewBag.Title = "Movies List";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+
+<div>
+    <div><b>Current Movies</b><br /></div>
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Movie Name</th>
+            <th>Rating</th>
+            <th>Discription</th>
+            <th>Image</th>
+            <th>Book</th>
+        </tr>
+        @foreach (var d in Model.MovieDtos)
+        {
+            <tr>
+                <td>@d.MovieName</td>
+                <td>@d.MovieRating</td>
+                <td>@d.Description</td>
+                <td><img width="50" height="50" src="@Url.Content(d.Photo.Trim())"></td>
+                <td><input type="button" id="btnMakeBooking" onclick="Book(@d.Id)" value="Book" /></td>
+            </tr>
+        }
+    </table>
+
+</div>
+<script>
+
+    function Book(id) {
+        window.location.href = "@Url.Action("GetMovieShowById", "Home")?id=" +id;
+    }
+
+</script>

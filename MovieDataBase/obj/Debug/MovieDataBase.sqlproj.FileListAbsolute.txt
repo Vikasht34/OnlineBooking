@@ -1,0 +1,9 @@
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\bin\Debug\MovieDataBase.dacpac
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\bin\Debug\MovieDataBase.dll
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\bin\Debug\MovieDataBase.pdb
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\Model.xml
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\refactor.xml
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\postdeploy.sql
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\predeploy.sql
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\MovieDataBase.dll
+C:\Users\ax583e\source\repos\BookMyShow\MovieDataBase\obj\Debug\MovieDataBase.pdb

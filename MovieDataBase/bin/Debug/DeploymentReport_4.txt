@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Booking] (Table)
+       [dbo].[Cinema] (Table)
+       [dbo].[Movie] (Table)
+       [dbo].[MovieShow] (Table)
+       [dbo].[User] (Table)
+       [dbo].[FK_MovieShow_Movie] (Foreign Key)
+       [dbo].[FK_MovieShow_Cinema] (Foreign Key)
+
+** Supporting actions
